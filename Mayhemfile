@@ -1,0 +1,33 @@
+# Mayhem by https://forallsecure.com
+# Mayhemfile: configuration file for testing your target with Mayhem
+# Format: YAML 1.1
+
+# Project name that the target belongs to
+project: baptistapedro/lunasvg-fuzz
+
+# Target name (should be unique within the project)
+target: lunasvg-fuzz-latest
+
+# Base image to run the binary in.
+image: index.docker.io/pedbap/lunasvg-fuzz@sha256:c47dbc39f62a9f939956727ca83c0dc14f2f2a89a47cb20cc01cc9c1366ff8d0
+
+# Turns on extra test case processing (completing a run will take longer)
+advanced_triage: false
+
+# List of commands used to test the target
+cmds:
+
+  # Command used to start the target, "@@" is the input file
+  # (when "@@" is omitted Mayhem defaults to stdin inputs)
+  - cmd: /svg2png @@
+
+    ## Uncomment to change default dir (/) from which the target is invoked
+    #cwd: /
+
+    ## Uncomment the block below to define environment variables
+    #env:
+    #  MY_ENV_VAR: MY_ENV_VALUE
+
+    #network:
+    # max_length: 8192
+    env: {}
