@@ -1,0 +1,5 @@
+project: lunasvg
+target: lunasvg
+
+cmds:
+  - cmd: /svg2png @@
